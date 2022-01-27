@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Modal, Button, Carousel } from 'react-bootstrap'
+import { Modal, Button, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+
 const Room = ({ room }) => {
 
     const [show, setShow] = useState(false);
@@ -11,16 +14,19 @@ const Room = ({ room }) => {
     return (
         <div className='row bs'>
             <div className='col-md-4'>
-                <img src={room.imageurls[0]} className='smallimg' />
+                <img src={room.imageurls[0]} className='smallimg' alt='images' />
             </div>
             <div className='col-md-7'>
                 <h1>{room.name}</h1>
                 <b>
-                    <p>Max Count:{room.maxcount}</p>
-                    <p>Phone Number:{room.phonenumber}</p>
-                    <p>Type:{room.type}</p>
+                    <p>Max Count: {room.maxcount}</p>
+                    <p>Phone Number: {room.phonenumber}</p>
+                    <p>Type: {room.type}</p>
                 </b>
                 <div style={{ float: 'right' }}>
+                    <Link to={`/book/${room._id}`}>
+                        <button className='btn btn-primary m-2'>Book Now</button>
+                    </Link>
                     <button onClick={handleShow} className='btn btn-primary'>
                         View Details
                     </button>
@@ -40,6 +46,7 @@ const Room = ({ room }) => {
                                     <img
                                         className="d-block w-100 bigimg"
                                         src={url}
+                                        alt='images'
                                     />
                                 </Carousel.Item>
                             })

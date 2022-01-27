@@ -6,7 +6,8 @@ require('./db');
 //Routes
 const roomsRoute = require('./routes/roomRoute');
 
-
+//middleware
+app.use(express.json());
 
 app.use('/api/rooms', roomsRoute)
 
